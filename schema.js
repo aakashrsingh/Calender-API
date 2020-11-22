@@ -2,6 +2,7 @@ const graphql =require("graphql");
 const {buildSchema} = require("graphql");
 const User=require("./user.js");
 const Event =require("./event.js");
+// const Date = require("./date.js");
 
 // const {
 //     GraphQLObjectType,
@@ -134,6 +135,7 @@ type Query {
     events(email: String!): [Event!]!
     event(date: String!): Event
     me: User
+    date: Date
 }
 type Mutation {
     addEvent(email: String!, task: String!, date: String!, time: String!, isDone: Boolean!): Event
@@ -153,6 +155,16 @@ type User {
     lname: String!
     email: String!
     password: String!
+}
+
+type Date {
+    date: Int!
+    month: String!
+    year: Int!
+    hour: Int!
+    minute: Int!
+    seconds: Int!
+    day: String!
 }
 
 type EventUpdateResponse {

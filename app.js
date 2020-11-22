@@ -4,6 +4,7 @@ const {graphqlHTTP}=require("express-graphql");
 const schema=require("./schema.js");
 const User = require("./user.js");
 const Event = require("./event.js");
+const Date = require("./date.js");
 
 const app=express();
 dotenv.config();
@@ -19,6 +20,7 @@ const rootValue = {
       user: args => User.findOne({email: args.email}),
       events: args => Event.find({email: args.email}),
     //   event: args => Event.find({date: args.date})
+      date: ()=> Date ,
       addUser: ({fname, lname, email, password})=>{
           let user = new User({
               fname,
